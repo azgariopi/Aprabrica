@@ -48,9 +48,15 @@ if(!isDev){
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/helioslauncher-setup-${info.version}.dmg`
+                    info.darwindownload = `https://github.com/azgariopi/Aprabrica/releases/download/v${info.version}/exatiumlauncher-setup-${info.version}.AppImage`
                     showUpdateUI(info)
-                }
+                } else if(process.platform === "linux") {
+                    info.darwindownload = `https://github.com/azgariopi/Aprabrica/releases/download/v${info.version}/exatiumlauncher-setup-${info.version}.dmg`
+                    showUpdateUI(info)
+                } else if(process.platform === "win32") {
+                    info.darwindownload = `https://github.com/azgariopi/Aprabrica/releases/download/v${info.version}/exatiumlauncher-setup-${info.version}.exe`
+                    showUpdateUI(info)
+                };
                 
                 populateSettingsUpdateInformation(info)
                 break
