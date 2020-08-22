@@ -66,6 +66,9 @@ function showMainUI(data){
     updateSelectedServer(data.getServer(ConfigManager.getSelectedServer()))
     refreshServerStatus()
     setTimeout(() => {
+        $('#loadSpinnerImage').addClass('boom')
+        $('#loadCenterImage').addClass('boom')
+
         document.getElementById('frameBar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
         document.body.style.backgroundImage = `url('assets/images/backgrounds/${document.body.getAttribute('bkid')}.jpg')`
         $('#main').show()
@@ -86,13 +89,11 @@ function showMainUI(data){
             $(VIEWS.login).fadeIn(1000)
         }
 
-        setTimeout(() => {  
+        setTimeout(() => {
             $('#loadingContainer').fadeOut(500, () => {
-                $('#loadingContainer').removeClass('loadSpinnerImage');
-                $('#loadingContainer').addClass('loadSpinnerImage2');
-                console.log("s")
+                $('#loadSpinnerImage').removeClass('rotating')
             })
-        }, 5000)
+        }, 250)
         
     }, 750)
     // Disable tabbing to the news container.
