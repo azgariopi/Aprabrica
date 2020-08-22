@@ -78,24 +78,21 @@ function showMainUI(data){
             validateSelectedAccount()
         }
 
-        if(ConfigManager.isFirstLaunch()){
-            currentView = VIEWS.welcome
-            $(VIEWS.welcome).fadeIn(1000)
+        if(isLoggedIn){
+            currentView = VIEWS.landing
+            $(VIEWS.landing).fadeIn(1000)
         } else {
-            if(isLoggedIn){
-                currentView = VIEWS.landing
-                $(VIEWS.landing).fadeIn(1000)
-            } else {
-                currentView = VIEWS.login
-                $(VIEWS.login).fadeIn(1000)
-            }
+            currentView = VIEWS.login
+            $(VIEWS.login).fadeIn(1000)
         }
 
-        setTimeout(() => {
+        setTimeout(() => {  
             $('#loadingContainer').fadeOut(500, () => {
-                $('#loadSpinnerImage').removeClass('rotating')
+                $('#loadingContainer').removeClass('loadSpinnerImage');
+                $('#loadingContainer').addClass('loadSpinnerImage2');
+                console.log("s")
             })
-        }, 250)
+        }, 5000)
         
     }, 750)
     // Disable tabbing to the news container.
